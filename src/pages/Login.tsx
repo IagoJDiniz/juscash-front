@@ -1,22 +1,24 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { login } from "@utils/auth";
 import api from "@services/api";
 import { useState } from "react";
 import LogoSource from "@assets/logo-juscash.jpeg";
 
 import * as S from "@styles/Login.styles";
-import { Row, AuthFormsCentralContainer, Column } from "@styles/Common.styles";
+import { AuthFormsCentralContainer } from "@styles/Common.styles";
 import { TextInput } from "components/TextInput.component";
 import { createNotification } from "components/NotificationFlag.component";
-import { ToastContainer } from "react-toastify";
+import { LoadingSpinner } from "components/LoadingSpinner.component";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
     try {
+      setIsLoading(true);
       const response = await api.post("/login", {
         email,
         password,
@@ -24,8 +26,10 @@ const Login = () => {
 
       const token = response.data.token;
       login(token);
+      setIsLoading(false);
       navigate("/posts");
     } catch (error: any) {
+      setIsLoading(false);
       createNotification({
         type: "error",
         message: error.response.data.errors
@@ -53,10 +57,11 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
+        <LoadingSpinner loading={isLoading} />
         <S.LoginButton onClick={handleLogin}>Login</S.LoginButton>
+
+        <Link to={"/register"}>Não possui uma conta? Cadastre-se</Link>
       </AuthFormsCentralContainer>
-      <ToastContainer />
     </S.Container>
   );
 };

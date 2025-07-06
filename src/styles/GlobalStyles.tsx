@@ -33,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
   max-width: 100vw;
-  overflow-x: hidden;
   font-family: 'Inter';
   background-color:"#fcfdff";
 }
@@ -43,8 +42,9 @@ textarea:focus, input:focus{
 }
 
 a {
-  color: ${mainColors.primary};
+  color: ${mainColors.secondary};
   text-decoration: underline;
+  font-size:14px;
 }
 
 

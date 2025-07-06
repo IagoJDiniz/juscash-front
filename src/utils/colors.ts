@@ -4,4 +4,6 @@ export const mainColors = {
   background: "#f1f1f1",
 
   inputBorders: "#ddd",
+
+  error: "#F44336",
 };
