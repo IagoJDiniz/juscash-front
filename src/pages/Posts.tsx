@@ -1,111 +1,88 @@
+import { usePosts } from "@hooks/usePosts";
+import { Kanban } from "@components/Kanban.component";
+import { createNotification } from "@components/NotificationFlag.component";
 import api from "@services/api";
-import { logout } from "@utils/auth";
-import { Kanban } from "components/Kanban.component";
-import { createNotification } from "components/NotificationFlag.component";
-import { useLayoutEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Navbar } from "@components/Navbar.component";
+import { useEffect, useState } from "react";
+import { debounce } from "lodash";
+import { PostFilters } from "@components/PostFilters.component";
+import * as S from "@styles/Posts.styles";
+import { Row } from "@styles/Common.styles";
+import { faBalanceScaleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Posts = () => {
-  const navigate = useNavigate();
+  const {
+    posts,
+    columns,
+    setColumns,
+    fetchMorePosts,
+    setSkip,
+    fetchFirstFilteredPosts,
+  } = usePosts();
+  const [filters, setFilters] = useState<{
+    textToSearch?: string;
+    startDate?: Date;
+    endDate?: Date;
+  }>({});
 
-  const [posts, setPosts] = useState([]);
-  const [columns, setColumns] = useState<any>();
-
-  const getFirstPosts = async () => {
+  const updatePostStatus = async (postId: string, newStatus: string) => {
     try {
-      const response = await api.get("/posts");
-      console.log("posts response", response);
-
-      setPosts(response.data.posts);
-
-      setColumns({
-        lanes: [
-          {
-            id: "lane1",
-            title: "Planned Tasks",
-            label: "2/2",
-            cards: [
-              {
-                id: "Card1",
-                title: "Write Blog",
-                description: "Can AI make memes",
-                label: "30 mins",
-                draggable: false,
-              },
-              {
-                id: "Card2",
-                title: "Pay Rent",
-                description: "Transfer via NEFT",
-                label: "5 mins",
-                metadata: { sha: "be312a1" },
-              },
-            ],
-          },
-          {
-            id: "lane2",
-            title: "Completed",
-            label: "0/0",
-            cards: [],
-          },
-        ],
-      });
+      await api.put(`/update-post`, { id: postId, status: newStatus });
     } catch (error: any) {
       createNotification({
         type: "error",
-        message: error.response.data.errors
-          ? error.response.data.errors[0].message
-          : error.response.data.message,
+        message: "Erro ao atualizar status",
       });
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  // Scroll infinito monitorado pela janela
+  useEffect(() => {
+    const handleScroll = debounce(() => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.body.scrollHeight;
 
-  const onDragEnd = () => {
-    console.log("drag ended");
-  };
-  const onDragStart = () => {
-    console.log("drag started");
-  };
-  const renderCard = () => {
-    console.log("drag ended");
-  };
+      const nearBottom = scrollTop + windowHeight >= documentHeight - 100;
 
-  useLayoutEffect(() => {
-    if (posts.length === 0) {
-      getFirstPosts();
-    }
-  }, []);
-  const data = {
-    lanes: [
-      {
-        id: "lane1",
-        title: "A Fazer",
-        cards: [
-          {
-            id: "card1",
-            title: "Tarefa 1",
-            description: "Descrição da tarefa 1",
-          },
-        ],
-      },
-      {
-        id: "lane2",
-        title: "Feito",
-        cards: [],
-      },
-    ],
-  };
+      if (nearBottom) {
+        fetchMorePosts(filters).catch(() => {
+          createNotification({
+            type: "error",
+            message: "Erro ao buscar mais publicações",
+          });
+        });
+      }
+    }, 300);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [fetchMorePosts]);
+
   return (
-    <div>
-      <h2>Posts Privados</h2>
-      <button onClick={() => console.log(posts)}>log posts</button>
-      <button onClick={handleLogout}>Sair</button>
-      <Kanban />
-    </div>
+    <>
+      <Navbar />
+      <S.ContentWrapper>
+        <S.FilterWrapper>
+          <Row alignCenter>
+            <S.Icon icon={faBalanceScaleLeft} size="2x" />
+            <S.SectionHeader>Publicações</S.SectionHeader>
+          </Row>
+          <PostFilters
+            onFilterChange={(f) => {
+              setFilters(f);
+              fetchFirstFilteredPosts(f);
+            }}
+          />
+        </S.FilterWrapper>
+        <Kanban
+          posts={posts}
+          columns={columns}
+          setColumns={setColumns}
+          onStatusChange={updatePostStatus}
+        />
+      </S.ContentWrapper>
+    </>
   );
 };
 

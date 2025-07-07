@@ -16,7 +16,10 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
     "axios": "^1.10.0",
+    "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^18.3.1",
     "react-router": "^7.6.3",
     "react-scripts": "5.0.1",
@@ -51,7 +54,9 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.20",
     "@types/react": "^18.3.23",
+    "@types/react-datepicker": "^7.0.0",
     "@types/react-dom": "^18.3.7",
     "@types/react-router": "^5.1.20",
     "@types/react-toastify": "^4.1.0",

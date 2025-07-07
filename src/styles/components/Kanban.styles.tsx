@@ -7,10 +7,11 @@ export const KanbanContainer = styled.div`
   display: flex;
   gap: 20px;
   padding: 20px;
-  min-width: 1000px;
+  min-width: max-content;
   width: 100vw;
-  border: 1px solid;
   justify-content: center;
+
+  max-width: 100vw;
 `;
 
 export const KanbanColumn = styled.div`
@@ -63,7 +64,7 @@ export const KanbanCard = styled.div`
     font-weight: 400;
     color: #4b5863;
     padding: 0px;
-    margin: 0px 16px 0px 0px;
+    margin: 0px 24px 0px 0px;
   }
   ${Row} {
     border: none;
@@ -78,7 +79,17 @@ export const HeaderIcon = styled(FontAwesomeIcon)`
   color: ${mainColors.primary};
 `;
 export const CardIcon = styled(FontAwesomeIcon)`
-  margin: 0px 8px 0px 0px;
+  margin: 0px 4px 0px 0px;
   padding: 0px;
   color: #4b5863;
+`;
+
+export const EmptyMessage = styled.h4`
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: #4b5863;
+  padding: 0px;
+  margin: 24px 0px;
 `;

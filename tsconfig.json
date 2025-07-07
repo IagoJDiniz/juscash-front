@@ -22,6 +22,9 @@
       "@services/*": ["./services/*"],
       "@assets/*": ["./assets/*"],
       "@routes/*": ["./routes/*"],
+      "@types/*": ["./types/*"],
+      "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"],
       "@styles/*": ["./styles/*"]
     }
   },

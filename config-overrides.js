@@ -11,6 +11,8 @@ module.exports = override(
         "@components": "./src/components",
         "@utils": "./src/utils",
         "@assets": "./src/assets",
+        "@types": "./src/types",
+        "@hooks": "./src/hooks",
         "@styles": "./src/styles",
       },
     },
