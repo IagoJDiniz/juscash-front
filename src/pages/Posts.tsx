@@ -16,7 +16,6 @@ const Posts = () => {
     columns,
     setColumns,
     fetchMorePosts,
-    setSkip,
     fetchFirstFilteredPosts,
   } = usePosts();
   const [filters, setFilters] = useState<{

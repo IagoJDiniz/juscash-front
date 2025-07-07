@@ -1,5 +1,4 @@
 import { mainColors } from "@utils/colors";
-import DatePicker from "react-datepicker";
 import styled from "styled-components";
 
 export const Container = styled.div`
