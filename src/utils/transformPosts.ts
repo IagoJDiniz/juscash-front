@@ -20,10 +20,7 @@ export function transformPostsToColumns(posts: Post[]) {
         ? formatShortDistanceToNow(new Date(post.updated_at))
         : "desconhecido",
       publishDate: post.data_publicacao
-        ? format(
-            addHours(new Date("2024-10-02T00:00:00.000Z"), 3),
-            "dd/MM/yyyy"
-          ) //Lidando com UTC-3
+        ? format(addHours(new Date(post.data_publicacao), 3), "dd/MM/yyyy") //Lidando com UTC-3
         : "desconhecida",
     });
   });
