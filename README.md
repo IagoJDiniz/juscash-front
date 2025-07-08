@@ -73,9 +73,13 @@ npm install
 ## 📄 Outros links
 
 <br/>
-[Link do repositório Back-End](https://github.com/IagoJDiniz/JusCashCase/)
+
+  [Link do repositório Back-End](https://github.com/IagoJDiniz/JusCashCase/)
+  
 <br/>
-[Link do web scraper das publicações do DJE](https://github.com/IagoJDiniz/dje-scraping)
+
+  [Link do web scraper das publicações do DJE](https://github.com/IagoJDiniz/dje-scraping)
+  
 <br/>
 
 ## 📈 Pontos de melhoria
