@@ -7,18 +7,23 @@ export const KanbanContainer = styled.div`
   display: flex;
   gap: 20px;
   padding: 20px;
-  min-width: max-content;
   width: 100vw;
   justify-content: center;
 
-  max-width: 100vw;
+  max-width: 100%;
+
+  overflow-x: scroll;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const KanbanColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 280px;
+  min-width: 280px;
   min-height: 500px;
   background: #f4f5f7;
   border-radius: 8px;
