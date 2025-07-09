@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+<h1 align="center">juscash-front</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
 
-## Available Scripts
+<p align="center">
+<a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#-funcionalidades-principais">Funcionalidades principais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#-regras-do-kanban">Regras do kanban</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#%EF%B8%8F-instalação-e-execução">Instalação e execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#-outros-links">Outros links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#-pontos-de-melhoria">Pontos de melhoria</a>
 
-In the project directory, you can run:
+</p>
 
-### `npm start`
+## ❔ Sobre
+Esse projeto é um Kanban para o manuseio das publicações extraídas pelo [dje-scraping](https://github.com/IagoJDiniz/dje-scraping) via API do [JusCashCase](https://github.com/IagoJDiniz/JusCashCase) por usuários autenticados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔧 Tecnologias
 
-### `npm test`
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React](https://react.dev/)
+- [Axios](https://axios-http.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React-datepicker](https://www.npmjs.com/package/react-datepicker)
+- [React Router](https://reactrouter.com/)
+- [React Toastify](https://www.npmjs.com/package/react-toastify)
+- [Styled components](https://styled-components.com/)
 
-### `npm run build`
+## 🧠 Funcionalidades principais
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Criação de conta e autenticação para uso do Kanban
+  - Filtragem por data de publicação, número de processo, autores e advogados(Psiu...a filtragem é por qualquer termo que esteja na publicação.... mas não conta pra ninguém!!)
+  - Kanban com 04 colunas para gerenciamento das publicações do DJE, sendo "Publicações novas", "Publicações lidas", "Enviar para advogado responsável" e "Concluídas"
+  - Responsividade para utilizar em diversas telas, full hd, notebooks e celulares
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📒 Regras do Kanban
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - Publicações novas só podem ser movimentadas para "Publicações lidas"
+  - Publicações lidas só podem ser movimentadas para "Enviar para advogado responsável"
+  - Publicações em "Enviar para advogado responsável" podem voltar para "Publicações lidas" ou avançar para "Concluídas"
+  - Publicações concluídas não podem ser movimentadas 
+  - Você deve estar logado para ver e interagir com o Kanban
 
-### `npm run eject`
+## ⚙️ Instalação e execução
+  <p>Garanta que voce tem um gerenciador de pacotes(como npm) instalado e o NodeJS LTS</p>
+  
+  ```bash
+git clone https://github.com/IagoJDiniz/juscash-front.git
+cd juscash-front
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+npm install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  <p>Crie um arquivo .env com o seguinte padrão:</p>
+  
+  ``` 
+  REACT_APP_API_URL=http://localhost:3333
+  NODE_ENV=dev
+  ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  <p>Por fim:</p>
+   
+  ``` 
+  npm run start
+```
+  <br/>
+  
 
-## Learn More
+## 📄 Outros links
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  [Link do repositório Back-End](https://github.com/IagoJDiniz/JusCashCase/)
+  
+<br/>
+
+  [Link do web scraper das publicações do DJE](https://github.com/IagoJDiniz/dje-scraping)
+  
+<br/>
+
+## 📈 Pontos de melhoria
+  - Criar sistema de redefinição de senha com envio de email de confirmação
+  - Adicionar à busca dos filtros valores exatos pois pode tornar a aplicação mais rápida no futuro
+  - Criar uma encriptação dos dados das requisições de autenticação para fazer uma dupla camada de proteção junto ao https
+  - Atualizar a aplicação para o uso de ferramentas mais recentes como NextJS
+  - Documentar o projeto com telas e exemplos de uso
+  - Padronizar as flags de erro nos formulários pois como não haviam imagens dos casos de erro deixei implementado toasts e labels em conjunto
+  - Criar mais arquivos com padrão do system design(Não foi fornecido todo)
+  - Trocar o uso de requisições via useEffect para utilizar o React Query
+  - Após a implementação do React Query poderemos gerenciar um estado global dos dados das requisições fazendo novas chamadas somente quando necessário
+  - Adicionar mais tipagens para os arquivos e componentes utilizados pois o typescript do React é permissivo em excesso
+  - Melhorar a responsividade para breakpoints entre 768px e 1300px(Tablets e minibooks), qualquer coisa abaixo ou acima disso já está funcionando perfeitamente
+    
