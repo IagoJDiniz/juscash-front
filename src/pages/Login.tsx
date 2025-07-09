@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { login } from "@utils/auth";
 import api from "@services/api";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import LogoSource from "@assets/logo-juscash.jpeg";
 
 import * as S from "@styles/Login.styles";
@@ -39,6 +39,13 @@ const Login = () => {
     }
   };
 
+  const checkIsButtonDisabled = useCallback(() => {
+    if (email.length === 0 || password.length === 0) {
+      return true;
+    }
+    return false;
+  }, [password, email]);
+
   return (
     <S.Container>
       <AuthFormsCentralContainer>
@@ -58,7 +65,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <LoadingSpinner loading={isLoading} />
-        <S.LoginButton onClick={handleLogin}>Login</S.LoginButton>
+        <S.LoginButton onClick={handleLogin} disabled={checkIsButtonDisabled()}>
+          Login
+        </S.LoginButton>
 
         <Link to={"/register"}>Não possui uma conta? Cadastre-se</Link>
       </AuthFormsCentralContainer>

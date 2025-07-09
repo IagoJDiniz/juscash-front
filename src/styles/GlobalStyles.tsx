@@ -45,6 +45,7 @@ a {
   color: ${mainColors.secondary};
   text-decoration: underline;
   font-size:14px;
+  text-align:center;
 }
 
 

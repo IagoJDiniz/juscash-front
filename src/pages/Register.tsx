@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import api from "@services/api";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import LogoSource from "@assets/logo-juscash.jpeg";
 
 import * as S from "@styles/Register.styles";
@@ -71,6 +71,18 @@ const Register = () => {
     }
   };
 
+  const checkIsButtonDisabled = useCallback(() => {
+    if (
+      email.length === 0 ||
+      password.length === 0 ||
+      confirmPassword.length === 0 ||
+      name.length === 0
+    ) {
+      return true;
+    }
+    return false;
+  }, [password, confirmPassword, name, email]);
+
   return (
     <S.Container>
       <AuthFormsCentralContainer>
@@ -128,7 +140,10 @@ const Register = () => {
         </S.LinkRow>
         <LoadingSpinner loading={isLoading} />
 
-        <S.RegisterButton onClick={handleRegister}>
+        <S.RegisterButton
+          onClick={handleRegister}
+          disabled={checkIsButtonDisabled()}
+        >
           Criar conta
         </S.RegisterButton>
       </AuthFormsCentralContainer>

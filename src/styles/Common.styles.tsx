@@ -32,10 +32,14 @@ export const AuthFormsCentralContainer = styled.div`
 
   gap: 30px;
 
-  height: 100vh;
+  min-height: 100vh;
   width: 680px;
   max-width: 100vw;
 
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  padding: 0px 90px;
+  padding: 20px 90px;
+
+  @media (max-width: 768px) {
+    padding: 20px 20px;
+  }
 `;
