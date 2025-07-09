@@ -14,7 +14,7 @@ export const KanbanContainer = styled.div`
 
   overflow-x: scroll;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     justify-content: flex-start;
   }
 `;

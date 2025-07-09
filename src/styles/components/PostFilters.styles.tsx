@@ -9,7 +9,7 @@ export const Container = styled.div`
   width: 100%;
   gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 830px) {
     flex-direction: column;
   }
 `;
@@ -24,8 +24,11 @@ export const InputGroup = styled.div`
     color: ${mainColors.secondary};
   }
 
-  @media (max-width: 768px) {
-    width: 92vw;
+  @media (max-width: 1200px) {
+    padding-top: 0px;
+  }
+  @media (max-width: 830px) {
+    width: 90%;
     padding-top: 0px;
   }
 `;
@@ -42,13 +45,16 @@ export const TextInput = styled.input`
   border-radius: 4px;
   padding: 0px 4px;
   border: 1px solid ${mainColors.inputBorders};
+
+  @media (max-width: 1200px) {
+    width: 98%;
+  }
 `;
 
 export const DateWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  flex-wrap: wrap;
 
   input {
     height: 30px;
@@ -60,6 +66,12 @@ export const DateWrapper = styled.div`
   span {
     font-weight: 500;
   }
+`;
+
+export const DatePickerWrapper = styled.div`
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
 `;
 
 export const SearchButton = styled.button`

@@ -10,7 +10,7 @@ export const ContentWrapper = styled.div`
   width: 100%;
   max-width: 100vw;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     align-items: start;
   }
 `;
@@ -32,7 +32,7 @@ export const FilterWrapper = styled.div`
     width: 50%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     flex-direction: column;
     justify-content: start;
     gap: 16px;

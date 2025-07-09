@@ -52,26 +52,31 @@ export const PostFilters = ({ onFilterChange }: Props) => {
       <S.InputGroup>
         <S.Label>Data do diário</S.Label>
         <S.DateWrapper>
-          <span>De:</span>
-          <DatePicker
-            selected={startDate ?? undefined}
-            onChange={(date: Date | null) => setStartDate(date)}
-            locale={ptBR}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="DD/MM/AAAA"
-            className=""
-          />
-          <span>Até:</span>
-          <DatePicker
-            selected={endDate ?? undefined}
-            onChange={(date: Date | null) => setEndDate(date)}
-            locale={ptBR}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="DD/MM/AAAA"
-          />
-          <S.SearchButton onClick={handleClickSearch}>
-            <FontAwesomeIcon icon={faSearch} size="sm" />
-          </S.SearchButton>
+          <S.DatePickerWrapper>
+            <span>De:&nbsp;</span>
+            <DatePicker
+              selected={startDate ?? undefined}
+              onChange={(date: Date | null) => setStartDate(date)}
+              locale={ptBR}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="DD/MM/AAAA"
+              enableTabLoop={false}
+            />
+          </S.DatePickerWrapper>
+          <S.DatePickerWrapper>
+            <span>Até:</span>
+            <DatePicker
+              selected={endDate ?? undefined}
+              onChange={(date: Date | null) => setEndDate(date)}
+              locale={ptBR}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="DD/MM/AAAA"
+              enableTabLoop={false}
+            />
+            <S.SearchButton onClick={handleClickSearch}>
+              <FontAwesomeIcon icon={faSearch} size="sm" />
+            </S.SearchButton>
+          </S.DatePickerWrapper>
         </S.DateWrapper>
       </S.InputGroup>
     </S.Container>
