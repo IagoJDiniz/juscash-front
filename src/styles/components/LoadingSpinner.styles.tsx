@@ -1,5 +1,5 @@
 import { mainColors } from "@utils/colors";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export const rotateAnimation = keyframes`
   from {
@@ -14,6 +14,18 @@ export const SpinnerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+
+  position: sticky;
+  top: 4px;
+  left: 8px;
+
+  margin-top: 4px;
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;
 
 export const Spinner = styled.div<{ size?: number }>`

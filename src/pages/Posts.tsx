@@ -9,6 +9,7 @@ import { PostFilters } from "@components/PostFilters.component";
 import * as S from "@styles/Posts.styles";
 import { Row } from "@styles/Common.styles";
 import { faBalanceScaleLeft } from "@fortawesome/free-solid-svg-icons";
+import { LoadingSpinner } from "@components/LoadingSpinner.component";
 
 const Posts = () => {
   const {
@@ -17,6 +18,7 @@ const Posts = () => {
     setColumns,
     fetchMorePosts,
     fetchFirstFilteredPosts,
+    isLoading,
   } = usePosts();
   const [filters, setFilters] = useState<{
     textToSearch?: string;
@@ -61,6 +63,7 @@ const Posts = () => {
   return (
     <>
       <Navbar />
+      <LoadingSpinner loading={isLoading} />
       <S.ContentWrapper>
         <S.FilterWrapper>
           <Row alignCenter>

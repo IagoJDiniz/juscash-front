@@ -34,7 +34,7 @@ export const AuthFormsCentralContainer = styled.div`
 
   min-height: 100vh;
   width: 680px;
-  max-width: 100vw;
+  max-width: 100%;
 
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 20px 90px;

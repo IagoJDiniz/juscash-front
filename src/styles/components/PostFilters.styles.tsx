@@ -25,10 +25,11 @@ export const InputGroup = styled.div`
   }
 
   @media (max-width: 1200px) {
+    width: 380px;
     padding-top: 0px;
   }
   @media (max-width: 830px) {
-    width: 90%;
+    width: 100%;
     padding-top: 0px;
   }
 `;
@@ -46,8 +47,9 @@ export const TextInput = styled.input`
   padding: 0px 4px;
   border: 1px solid ${mainColors.inputBorders};
 
-  @media (max-width: 1200px) {
-    width: 98%;
+  @media (max-width: 830px) {
+    width: 375px;
+    max-width: 90vw;
   }
 `;
 
@@ -65,6 +67,21 @@ export const DateWrapper = styled.div`
   }
   span {
     font-weight: 500;
+  }
+
+  @media (max-width: 424px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .react-datepicker-popper {
+      margin-left: 8px;
+    }
+  }
+
+  @media (min-width: 831px) and (max-width: 1200px) {
+    //Alinhando o datepicker direito em telas médias
+    .right-datepicker .react-datepicker-popper {
+      margin-left: -18px;
+    }
   }
 `;
 

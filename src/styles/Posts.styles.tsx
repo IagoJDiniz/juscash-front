@@ -37,7 +37,7 @@ export const FilterWrapper = styled.div`
     justify-content: start;
     gap: 16px;
     margin-top: 8px;
-    margin-left: 20px;
+    padding-left: 20px;
     ${Row} {
       width: 100%;
     }

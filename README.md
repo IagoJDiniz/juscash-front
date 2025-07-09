@@ -14,8 +14,8 @@
 </p>
 
 ## ❔ Sobre
-Esse projeto é um Kanban para o manuseio das publicações extraídas pelo [dje-scraping](https://github.com/IagoJDiniz/dje-scraping) via API do [JusCashCase](https://github.com/IagoJDiniz/JusCashCase) por usuários autenticados.
 
+Esse projeto é um Kanban para o manuseio das publicações extraídas pelo [dje-scraping](https://github.com/IagoJDiniz/dje-scraping) via API do [JusCashCase](https://github.com/IagoJDiniz/JusCashCase) por usuários autenticados.
 
 ## 🔧 Tecnologias
 
@@ -31,20 +31,21 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🧠 Funcionalidades principais
 
-  - Criação de conta e autenticação para uso do Kanban
-  - Filtragem por data de publicação, número de processo, autores e advogados(Psiu...a filtragem é por qualquer termo que esteja na publicação.... mas não conta pra ninguém!!)
-  - Kanban com 04 colunas para gerenciamento das publicações do DJE, sendo "Publicações novas", "Publicações lidas", "Enviar para advogado responsável" e "Concluídas"
-  - Responsividade para utilizar em diversas telas, full hd, notebooks e celulares
+- Criação de conta e autenticação para uso do Kanban
+- Filtragem por data de publicação, número de processo, autores e advogados(Psiu...a filtragem é por qualquer termo que esteja na publicação.... mas não conta pra ninguém!!)
+- Kanban com 04 colunas para gerenciamento das publicações do DJE, sendo "Publicações novas", "Publicações lidas", "Enviar para advogado responsável" e "Concluídas"
+- Responsividade para utilizar em diversas telas, full hd, notebooks e celulares
 
 ## 📒 Regras do Kanban
 
-  - Publicações novas só podem ser movimentadas para "Publicações lidas"
-  - Publicações lidas só podem ser movimentadas para "Enviar para advogado responsável"
-  - Publicações em "Enviar para advogado responsável" podem voltar para "Publicações lidas" ou avançar para "Concluídas"
-  - Publicações concluídas não podem ser movimentadas 
-  - Você deve estar logado para ver e interagir com o Kanban
+- Publicações novas só podem ser movimentadas para "Publicações lidas"
+- Publicações lidas só podem ser movimentadas para "Enviar para advogado responsável"
+- Publicações em "Enviar para advogado responsável" podem voltar para "Publicações lidas" ou avançar para "Concluídas"
+- Publicações concluídas não podem ser movimentadas
+- Você deve estar logado para ver e interagir com o Kanban
 
 ## ⚙️ Instalação e execução
+
   <p>Garanta que voce tem um gerenciador de pacotes(como npm) instalado e o NodeJS LTS</p>
   
   ```bash
@@ -56,30 +57,34 @@ npm install
 ```
 
   <p>Crie um arquivo .env com o seguinte padrão:</p>
-  
-  ``` 
-  REACT_APP_API_URL=http://localhost:3333
-  NODE_ENV=dev
-  ```
 
-  <p>Por fim:</p>
-   
-  ``` 
-  npm run start
+```
+
+REACT_APP_API_URL=http://localhost:3333
+NODE_ENV=dev
+
+```
+
+<p>Por fim:</p>
+
+```
+
+npm run start
+
 ```
   <br/>
-  
+
 
 ## 📄 Outros links
 
 <br/>
 
   [Link do repositório Back-End](https://github.com/IagoJDiniz/JusCashCase/)
-  
+
 <br/>
 
   [Link do web scraper das publicações do DJE](https://github.com/IagoJDiniz/dje-scraping)
-  
+
 <br/>
 
 ## 📈 Pontos de melhoria
@@ -93,5 +98,6 @@ npm install
   - Trocar o uso de requisições via useEffect para utilizar o React Query
   - Após a implementação do React Query poderemos gerenciar um estado global dos dados das requisições fazendo novas chamadas somente quando necessário
   - Adicionar mais tipagens para os arquivos e componentes utilizados pois o typescript do React é permissivo em excesso
-  - Melhorar a responsividade para breakpoints entre 768px e 1300px(Tablets e minibooks), qualquer coisa abaixo ou acima disso já está funcionando perfeitamente
-    
+
+
+```

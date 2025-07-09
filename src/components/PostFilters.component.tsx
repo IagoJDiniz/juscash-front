@@ -63,7 +63,7 @@ export const PostFilters = ({ onFilterChange }: Props) => {
               enableTabLoop={false}
             />
           </S.DatePickerWrapper>
-          <S.DatePickerWrapper>
+          <S.DatePickerWrapper className="right-datepicker">
             <span>Até:</span>
             <DatePicker
               selected={endDate ?? undefined}
