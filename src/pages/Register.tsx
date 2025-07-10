@@ -69,6 +69,12 @@ const Register = () => {
     }
   };
 
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleRegister();
+    }
+  };
+
   const checkIsButtonDisabled = useCallback(() => {
     if (
       email.length === 0 ||
@@ -132,6 +138,7 @@ const Register = () => {
             setErrors((prev) => ({ ...prev, confirmPassword: "" }));
           }}
           error={errors.confirmPassword}
+          onKeyDown={handleEnter}
         />
         <S.LinkRow>
           <Link to={"/login"}>Já possui uma conta? Fazer login</Link>

@@ -36,6 +36,12 @@ const Login = () => {
     }
   };
 
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   const checkIsButtonDisabled = useCallback(() => {
     if (email.length === 0 || password.length === 0) {
       return true;
@@ -60,6 +66,7 @@ const Login = () => {
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleEnter}
         />
         <LoadingSpinner loading={isLoading} />
         <S.LoginButton onClick={handleLogin} disabled={checkIsButtonDisabled()}>

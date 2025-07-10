@@ -23,7 +23,7 @@ export const registerSchema = z
       .string()
       .regex(
         emailValidationRegex,
-        "O e-mail deve seguir o padrão 'xxx@xxx.com'"
+        "O e-mail deve seguir o padrão 'xxx@xxx.com' e não conter letras maiúsculas"
       ),
     password: passwordValidationSchema,
     confirmPassword: z.string(),
