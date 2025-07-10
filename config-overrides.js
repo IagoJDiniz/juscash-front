@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "production";
+
 const { override, addBabelPlugin } = require("customize-cra");
 
 module.exports = override(
