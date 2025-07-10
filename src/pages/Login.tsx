@@ -17,7 +17,6 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    console.log("env", process.env.NODE_ENV);
     try {
       setIsLoading(true);
       const response = await api.post("/login", {
