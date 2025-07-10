@@ -1,6 +1,18 @@
-process.env.NODE_ENV = "production";
-
+const webpack = require("webpack");
 const { override, addBabelPlugin } = require("customize-cra");
+
+const addDefinePluginInProduction = (config, env) => {
+  if (env === "production") {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify("production"),
+        },
+      })
+    );
+  }
+  return config;
+};
 
 module.exports = override(
   addBabelPlugin([
@@ -18,5 +30,6 @@ module.exports = override(
         "@styles": "./src/styles",
       },
     },
-  ])
+  ]),
+  addDefinePluginInProduction
 );
