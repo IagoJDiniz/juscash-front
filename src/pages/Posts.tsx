@@ -63,7 +63,9 @@ const Posts = () => {
   return (
     <>
       <Navbar />
-      <LoadingSpinner loading={isLoading} />
+      <S.LoadingWrapper>
+        <LoadingSpinner loading={isLoading} />
+      </S.LoadingWrapper>
       <S.ContentWrapper>
         <S.FilterWrapper>
           <Row alignCenter>

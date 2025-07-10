@@ -24,6 +24,8 @@ export const SpinnerContainer = styled.div`
   left: 8px;
 
   margin-top: 4px;
+  background-color: white;
+  z-index: 2;
 
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;

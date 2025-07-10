@@ -9,10 +9,18 @@ export const ContentWrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 100vw;
+  margin-top: -25px;
 
   @media (max-width: 1200px) {
     align-items: start;
   }
+`;
+
+export const LoadingWrapper = styled.div`
+  height: 56px;
+  padding-top: -4px;
+
+  overflow: hidden;
 `;
 export const KanbanWrapper = styled.div`
   flex: 1;
