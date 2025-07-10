@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import * as S from "@styles/components/ModalPostDetails.styles";
-import { format } from "date-fns";
+import { addHours, format } from "date-fns";
 interface PostModalProps {
   post: any;
   onClose: () => void;
@@ -28,7 +28,7 @@ export const ModalPostDetails = ({ post, onClose }: PostModalProps) => {
           <p>
             <strong>Data de publicação no DJE:</strong>
             <br />
-            {format(new Date(post.data_publicacao), "dd/MM/yyyy")}
+            {format(addHours(new Date(post.data_publicacao), 3), "dd/MM/yyyy")}
           </p>
           <p>
             <strong>Autor(es):</strong>
