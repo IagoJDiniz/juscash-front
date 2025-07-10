@@ -69,7 +69,7 @@ NODE_ENV=dev
 
 ```
 
-npm run start
+npm run dev
 
 ```
   <br/>
