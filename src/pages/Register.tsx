@@ -9,7 +9,6 @@ import { TextInput } from "components/TextInput.component";
 import { createNotification } from "components/NotificationFlag.component";
 import { toast } from "react-toastify";
 import { registerSchema } from "@utils/schemas/registerSchema";
-import { login } from "@utils/auth";
 import { LoadingSpinner } from "components/LoadingSpinner.component";
 
 const Register = () => {
@@ -49,13 +48,11 @@ const Register = () => {
         password,
       });
       if (registerResponse.status === 201) {
-        const loginResponse = await api.post("/login", {
+        await api.post("/login", {
           email,
           password,
         });
 
-        const token = loginResponse.data.token;
-        login(token);
         toast.success("Cadastro realizado com sucesso!");
         setIsLoading(false);
         navigate("/posts");
@@ -66,7 +63,8 @@ const Register = () => {
         type: "error",
         message:
           error.response?.data?.errors?.[0]?.message ||
-          error.response?.data?.message,
+          error.response?.data?.message ||
+          "Erro inesperado ao fazer login",
       });
     }
   };

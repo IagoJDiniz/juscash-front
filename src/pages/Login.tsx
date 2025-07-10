@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router";
-import { login } from "@utils/auth";
 import api from "@services/api";
 import { useCallback, useState } from "react";
 import LogoSource from "@assets/logo-juscash.jpeg";
@@ -19,13 +18,11 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       setIsLoading(true);
-      const response = await api.post("/login", {
+      await api.post("/login", {
         email,
         password,
       });
 
-      const token = response.data.token;
-      login(token);
       setIsLoading(false);
       navigate("/posts");
     } catch (error: any) {
@@ -34,7 +31,7 @@ const Login = () => {
         type: "error",
         message: error.response.data.errors
           ? error.response.data.errors[0].message
-          : error.response.data.message,
+          : error.response?.data?.message || "Erro inesperado ao fazer login",
       });
     }
   };

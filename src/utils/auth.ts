@@ -1,34 +1,20 @@
-export const isAuthenticated = (): boolean => {
-  const token = localStorage.getItem("token");
+import api from "@services/api";
 
-  if (!token) return false;
-
+export const isAuthenticated = async (): Promise<boolean> => {
   try {
-    const payloadBase64 = token.split(".")[1];
-    const decodedPayload = JSON.parse(atob(payloadBase64));
-
-    const nowInSeconds = Math.floor(Date.now() / 1000);
-
-    if (decodedPayload.exp && decodedPayload.exp < nowInSeconds) {
-      localStorage.removeItem("token");
-      return false;
-    }
-
+    await api.get("/me");
     return true;
-  } catch (error) {
-    localStorage.removeItem("token");
+  } catch {
     return false;
   }
 };
 
-export const login = (token: string) => {
-  localStorage.setItem("token", token);
-};
-
-export const logout = () => {
-  localStorage.removeItem("token");
-};
-
-export const getToken = (): string | null => {
-  return localStorage.getItem("token");
+export const logout = async () => {
+  try {
+    await api.post("/logout");
+  } catch {
+    // Se falhar, não impede o logout forçado
+  } finally {
+    window.location.href = "/login";
+  }
 };
