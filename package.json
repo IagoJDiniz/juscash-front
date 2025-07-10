@@ -30,9 +30,8 @@
     "zod": "^3.25.74"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "react-app-rewired start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "NODE_ENV=production react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
