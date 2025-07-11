@@ -24,7 +24,7 @@ export const KanbanColumn = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 280px;
-  min-height: 500px;
+  min-height: 680px;
   background: #f4f5f7;
   border-radius: 8px;
 
