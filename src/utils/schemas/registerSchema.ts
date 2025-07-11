@@ -18,7 +18,7 @@ export const passwordValidationSchema = z
 
 export const registerSchema = z
   .object({
-    name: z.string().min(1, "O nome é obrigatório"),
+    name: z.string().min(3, "O nome é obrigatório e com mínimo de 03 letras"),
     email: z
       .string()
       .regex(
